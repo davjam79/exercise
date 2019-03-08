@@ -178,6 +178,8 @@ print_r($_POST);
 	$min[2]=max(intval($bmr[0]),$intake)+500;
 	$min[3]=max(intval($bmr[0]),$intake)+750;
 
+	$which=($min[0]==$intake)?"intake":"BMR";
+
 	$to_burn=array();
 
 	if($time['seconds']>0)
@@ -305,7 +307,7 @@ foreach(array("","_350","_500","_750") as $key)
 					<div class="divTableHead">Estimated exercise time for <?php echo number_format($min[$temp++],0); ?> calories<?php
 	if($key!="")
 	{
-		printf(" (BMR + %s)",str_replace("_","",$key));
+		printf(" (%s + %s)",$which,str_replace("_","",$key));
 	}
 ?></div>
 					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_1".$key]); ?></div>
