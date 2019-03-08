@@ -319,17 +319,20 @@ foreach(array("","_350","_500","_750") as $key)
 					<div class="divTableHead">Estimated minimum calories burned by midnight</div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
-	$temp=$bmr[0]*$now/86400+$calories;
+//	$temp=$bmr[0]*$now/86400+$calories;
+	$temp=$bmr[0]+$active;
 ?>
 					<div class="divTableCell"><?php echo number_format($temp,0); ?></div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
-	$temp=$bmr[1]*$now/86400+$calories;
+//	$temp=$bmr[1]*$now/86400+$calories;
+	$temp=$bmr[1]+$active;
 ?>
 					<div class="divTableCell"><?php echo number_format($temp,0); ?></div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
-	$temp=$bmr[2]*$now/86400+$calories;
+//	$temp=$bmr[2]*$now/86400+$calories;
+	$temp=$bmr[2]+$active;
 ?>
 					<div class="divTableCell"><?php echo number_format($temp,0); ?></div>
 				</div>
