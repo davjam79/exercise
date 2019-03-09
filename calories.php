@@ -178,7 +178,14 @@ print_r($_POST);
 	$min[2]=max(intval($bmr[0]),$intake)+500;
 	$min[3]=max(intval($bmr[0]),$intake)+750;
 
-	$which=($min[0]==$intake)?"intake":"BMR";
+	if($min[0]==$intake)
+	{
+		$which="intake";
+	}
+	else
+	{
+		$which="BMR";
+	}
 
 	$to_burn=array();
 
