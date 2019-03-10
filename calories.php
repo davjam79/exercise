@@ -25,11 +25,13 @@ $intake=0;
 $min_cal=2400;
 
 $now=86400-time()%86400;                        // time to midnight
+$clock=date("H:i:s",time());
+
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Calculate time walking needed to reach <?php echo $min_cal2; ?> calories.</title>
+		<title>Calculate time walking needed to reach <?php echo $min_cal; ?> calories.</title>
 		<meta content="">
 		<style>
 /* DivTable.com */
@@ -68,7 +70,7 @@ print_r($_POST);
 		$temp=$_POST["height"];
 		if(is_numeric($temp))
 		{
-			if(($temp>=96)&&($temp<=384))				// between 2 and 8 feet tall
+			if(($temp>=60)&&($temp<=275))				// between 0.6m and 2.75m feet tall
 			{
 				$height=$temp;
 			}
@@ -162,7 +164,7 @@ print_r($_POST);
 //	$height/=4;
 //	$weight/=10;
 
-	$h1=$height/100;
+	$h1=$height/100;							// cm -> m
 	$w1=$weight;
 
 	$bmr=array();
@@ -412,11 +414,12 @@ $tab_index=1;
 					</div>
 				</div>
 			</div>
+			<input name="now" type="hidden" value="<?php echo $now; ?>" />
 			<input type="submit" name="calculate" id="calculate" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
 			<input type="reset" tabindex="<?php echo $tab_index++; ?>" />
 		</form>
 	<script type="text/javascript">
-		var newTitle = "Calculate time walking needed to reach <?php echo $min[0]; ?> calories.";
+		var newTitle = "Calculate time walking needed to reach <?php echo $min[0]; ?> calories as of <?php echo $clock; ?>.";
 		document.title = newTitle;
 	</script>
 	</body>

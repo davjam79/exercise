@@ -108,9 +108,9 @@ function	calories($distance,$time,$height,$weight,$age,$fat,$clothed,$gender=0)
 
 	$bmr=array();
 
-	$height=$height*0.00635;		// to metres
-	$weight=$weight/10;			// to kg
-	$clothed=$clothed/10;			// to kg
+	$height=$height/100;			// to metres
+//	$weight=$weight/10;			// to kg
+//	$clothed=$clothed/10;			// to kg
 	$seconds=time_to_sec($time);
 	if($seconds===FALSE)
 	{

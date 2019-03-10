@@ -11,9 +11,9 @@ header("Cache-Control: no-cache, no-store, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0");
 header("Pragma: no-cache");
 
-$height=268;									// 5'7"
-$weight=820;									// 82.0kg
-$clothed=$weight+50;								// 87.0kg
+$height=170;									// 170cm
+$weight=70;									// 70.0kg
+$clothed=$weight+5;								// 75.0kg
 $age=51;
 $fat=20;
 $time=array(
@@ -61,7 +61,7 @@ print_r($_POST);
 		$temp=$_POST["height"];
 		if(is_numeric($temp))
 		{
-			if(($temp>=96)&&($temp<=384))				// between 2 and 8 feet tall
+			if(($temp>=60)&&($temp<=275))				// between 0.6m and 2.75m feet tall
 			{
 				$height=$temp;
 			}
@@ -73,19 +73,19 @@ print_r($_POST);
 		$temp=$_POST["weight"];
 		if(is_numeric($temp))
 		{
-			if(($temp>=100)&&($temp<=1600))				// between 10 and 160kg
+			if(($temp>=10)&&($temp<=160))				// between 10 and 160kg
 			{
 				$weight=$temp;
 			}
 		}
 	}
 //printf("<p>Naked weight: %s</p>\n",$weight);
-	if(isset($_POST["weight2"]))
+	if(isset($_POST["clothed"]))
 	{
-		$temp=$_POST["weight2"];
+		$temp=$_POST["clothed"];
 		if(is_numeric($temp))
 		{
-			if(($temp>=100)&&($temp<=1600))				// between 10 and 160kg
+			if(($temp>=10)&&($temp<=160))				// between 10 and 160kg
 			{
 				$clothed=$temp;
 			}
@@ -136,6 +136,7 @@ print_r($_POST);
 	$time_string=sprintf("%02s:%02s:%02s",$time['hour'],$time['mins'],$time['secs']);
 //printf("<p>Time: %s</p>\n",$time_string);
 
+	$clothed=max($weight,$clothed);
 
 	$results=calories($distance,$time_string,$height,$weight,$age,$fat,$clothed);
 
@@ -228,6 +229,8 @@ print_r($_POST);
 	}
 }
 
+$tab_index=1;
+
 //printf("%s<br />\n%s<br />\n",$height,$weight);
 
 ?>
@@ -236,80 +239,32 @@ print_r($_POST);
 				<div class="divTableBody">
 					<div class="divTableRow">
 						<div class="divTableHead">Distance</div>
-						<div class="divTableCell"><input name="distance" type="number" step="0.01" min="0" max="100" value="<?php echo $distance; ?>" /></div>
+						<div class="divTableCell"><input name="distance" type="number" step="0.01" min="0" max="100" value="<?php echo $distance; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Time</div>
-						<div class="divTableCell"><input name="time" type="time" step="1" min="0" value="<?php echo $time_string; ?>" /></div>
+						<div class="divTableCell"><input name="time" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
-						<div class="divTableHead">Height</div>
-						<div class="divTableCell">
-							<select name="height">
-<?php
-foreach($height_array as $key => $value)
-{
-?>
-								<option value="<?php echo $key; ?>" <?php if($key==$height) echo "selected"; ?> >
-<?php
-	printf("%s' %s %s\"",$value['feet'],$value['inches'],$value['fraction']);
-?>
-								</option>
-<?php
-}
-?>
-								
-							</select>
-						</div>
+						<div class="divTableHead">Height (cm)</div>
+						<div class="divTableCell"><input name="height" id="height" type="number" step="0.1" min="60" max="275" value="<?php echo number_format($height,1); ?>" tabindex="<?php echo $tab_index++; ?>"/></div>
 					</div>
 					<div class="divTableRow">
-						<div class="divTableHead">Naked weight</div>
-						<div class="divTableCell">
-							<select name="weight">
-<?php
-foreach($weight_array as $key => $value)
-{
-?>
-								<option value="<?php echo $key; ?>" <?php if($key==$weight) echo "selected"; ?> >
-<?php
-	printf("%s kg",$value);
-?>
-								</option>
-<?php
-}
-?>
-								
-							</select>
-						</div>
+						<div class="divTableHead">Naked weight (kg)</div>
+						<div class="divTableCell"><input name="weight" id="weight" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($weight,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Clothed weight</div>
-						<div class="divTableCell">
-							<select name="weight2">
-<?php
-foreach($weight_array as $key => $value)
-{
-?>
-								<option value="<?php echo $key; ?>" <?php if($key==$clothed) echo "selected"; ?> >
-<?php
-	printf("%s kg",$value);
-?>
-								</option>
-<?php
-}
-?>
-								
-							</select>
-						</div>
+						<div class="divTableCell"><input name="clothed" id="clothed" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($clothed,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Bodyfat %</div>
-						<div class="divTableCell"><input name="fat" type="number" step="0.01" min="0" max="100" value="<?php echo $fat; ?>" /></div>
+						<div class="divTableCell"><input name="fat" type="number" step="0.01" min="0" max="100" value="<?php echo $fat; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 				</div>
 			</div>
-			<input type="submit" name="calculate" value="Calculate" />
-			<input type="reset" />
+			<input type="submit" name="calculate" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
+			<input type="reset" tabindex="<?php echo $tab_index++; ?>" />
 		</form>	
 	</body>
 </html>
