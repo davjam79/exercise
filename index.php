@@ -1,6 +1,5 @@
 <?php
 
-require_once("tables.php");		// load arrays to generate pop-ups
 require_once("functions.php");		// functions used for calculations
 
 date_default_timezone_set('Europe/London');
