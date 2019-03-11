@@ -1,6 +1,5 @@
 <?php
 
-require_once("tables.php");		// load arrays to generate pop-ups
 require_once("functions.php");		// functions used for calculations
 
 date_default_timezone_set('Europe/London');
@@ -22,7 +21,8 @@ $time=array(
 	"seconds"	=>	0,
 	);
 $intake=0;
-$min_cal=2400;
+//$min_cal=2400;
+$target=0;
 
 $now=86400-time()%86400;                        // time to midnight
 $clock=date("H:i:s",time());
@@ -109,6 +109,17 @@ print_r($_POST);
 			}
 		}
 	}
+	if(isset($_POST["target"]))						// minimum calorie target
+	{
+		$temp=$_POST["target"];
+		if(is_numeric($temp))
+		{
+			if($temp>=0)						// at least 0
+			{
+				$target=$temp;
+			}
+		}
+	}
 	if(isset($_POST["intake"]))						// calories consumed so far
 	{
 		$temp=$_POST["intake"];
@@ -175,7 +186,9 @@ print_r($_POST);
 	
 	$time_string=sprintf("%02s:%02s:%02s",$time['hour'],$time['mins'],$time['secs']);
 
-	$min[0]=max($min_cal,$intake);
+	$target=max($target,$bmr[0]);
+
+	$min[0]=max($intake,$target);
 	$min[1]=max(intval($bmr[0]),$intake)+350;
 	$min[2]=max(intval($bmr[0]),$intake)+500;
 	$min[3]=max(intval($bmr[0]),$intake)+750;
@@ -183,6 +196,10 @@ print_r($_POST);
 	if($min[0]==$intake)
 	{
 		$which="intake";
+	}
+	elseif($min[0]==$min_cal)
+	{
+		$which="target";
 	}
 	else
 	{
@@ -411,6 +428,10 @@ $tab_index=1;
 					<div class="divTableRow">
 						<div class="divTableHead">Bodyfat %</div>
 						<div class="divTableCell"><input name="fat" id="fat" type="number" step="0.01" min="0" max="100" value="<?php echo number_format($fat,2); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableHead">Minimum calorie target</div>
+						<div class="divTableCell"><input name="target" id="target" type="number" step="1" min="<?php echo number_format($bmr[0],0); ?>" max="10000" value="<?php echo number_format($target,0); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 				</div>
 			</div>
