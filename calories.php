@@ -33,16 +33,7 @@ $clock=date("H:i:s",time());
 	<head>
 		<title>Calculate time walking needed to reach <?php echo $min_cal; ?> calories.</title>
 		<meta content="">
-		<style>
-/* DivTable.com */
-.divTable		{display: table;	width: 100%;}
-.divTableRow		{display: table-row;}
-.divTableCell		{border: 1px solid #999999;	display: table-cell;	padding: 3px 10px;}
-.divTableHead		{border: 1px solid #999999;	display: table-cell;	padding: 3px 10px;}
-.divTableHeading	{background-color: #EEE;	display: table-header-group;	font-weight: bold;}
-.divTableFoot		{background-color: #EEE;	display: table-footer-group;	font-weight: bold;}
-.divTableBody		{display: table-row-group;}
-		</style>
+		<link rel="stylesheet" href="exercise.css">
 		<script>
 window.onload = function()
 {
