@@ -143,73 +143,73 @@ print_r($_POST);
 			<div class="divTableBody">
 				<div class="divTableRow">
 					<div class="divTableHeading"></div>
-					<div class="divTableHead">Formula</div>
-					<div class="divTableHead">Fitbit</div>
-					<div class="divTableHead">Garmin</div>
-					<div class="divTableHead"></div>
+					<div class="divTableHeada">Formula</div>
+					<div class="divTableHeada">Fitbit</div>
+					<div class="divTableHeada">Garmin</div>
+					<div class="divTableHeada"></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Time</div>
-					<div class="divTableCell"><?php echo $time_string; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
+					<div class="divTableCella"><?php echo $time_string; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Distance</div>
-					<div class="divTableCell"><?php echo $distance; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
+					<div class="divTableCella"><?php echo $distance; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Speed m/s</div>
-					<div class="divTableCell"><?php echo $results["speed"]; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
+					<div class="divTableCella"><?php echo $results["speed"]; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Speed mph</div>
-					<div class="divTableCell"><?php echo $results["mph"]; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
+					<div class="divTableCella"><?php echo $results["mph"]; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Cals/min</div>
-					<div class="divTableCell"><?php echo $results["average"]; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
+					<div class="divTableCella"><?php echo $results["average"]; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">BMR/min</div>
-					<div class="divTableCell"><?php echo $results["bmr1"]; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"><?php echo $results["bmr_1"]; ?></div>
+					<div class="divTableCella"><?php echo $results["bmr1"]; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"><?php echo $results["bmr_1"]; ?></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">BMR/min (v2)</div>
-					<div class="divTableCell"><?php echo $results["bmr2"]; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"><?php echo $results["bmr_2"]; ?></div>
+					<div class="divTableCella"><?php echo $results["bmr2"]; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"><?php echo $results["bmr_2"]; ?></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">BMR/min (v3)</div>
-					<div class="divTableCell"><?php echo $results["bmr3"]; ?></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"></div>
-					<div class="divTableCell"><?php echo $results["bmr_3"]; ?></div>
+					<div class="divTableCella"><?php echo $results["bmr3"]; ?></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"></div>
+					<div class="divTableCella"><?php echo $results["bmr_3"]; ?></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Total calories</div>
-					<div class="divTableCell"><?php echo intval($results["total"]); ?></div>
-					<div class="divTableCell"><?php echo $results["fitbit"]; ?></div>
-					<div class="divTableCell"><?php echo $results["garmin"]; ?></div>
-					<div class="divTableCell"></div>
+					<div class="divTableCella"><?php echo intval($results["total"]); ?></div>
+					<div class="divTableCella"><?php echo $results["fitbit"]; ?></div>
+					<div class="divTableCella"><?php echo $results["garmin"]; ?></div>
+					<div class="divTableCella"></div>
 				</div>
 			</div>
 		</div>
@@ -228,27 +228,27 @@ $tab_index=1;
 				<div class="divTableBody">
 					<div class="divTableRow">
 						<div class="divTableHead">Distance</div>
-						<div class="divTableCell"><input name="distance" type="number" step="0.01" min="0" max="100" value="<?php echo $distance; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="distance" type="number" step="0.01" min="0" max="100" value="<?php echo $distance; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Time</div>
-						<div class="divTableCell"><input name="time" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="time" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Height (cm)</div>
-						<div class="divTableCell"><input name="height" id="height" type="number" step="0.1" min="60" max="275" value="<?php echo number_format($height,1); ?>" tabindex="<?php echo $tab_index++; ?>"/></div>
+						<div class="divTableCella"><input name="height" id="height" type="number" step="0.1" min="60" max="275" value="<?php echo number_format($height,1); ?>" tabindex="<?php echo $tab_index++; ?>"/></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Naked weight (kg)</div>
-						<div class="divTableCell"><input name="weight" id="weight" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($weight,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="weight" id="weight" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($weight,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Clothed weight</div>
-						<div class="divTableCell"><input name="clothed" id="clothed" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($clothed,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="clothed" id="clothed" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($clothed,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Bodyfat %</div>
-						<div class="divTableCell"><input name="fat" type="number" step="0.01" min="0" max="100" value="<?php echo $fat; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="fat" type="number" step="0.01" min="0" max="100" value="<?php echo $fat; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 .divTable
 {
 	display: table;
-	width: 100%;
+	width: 960px;
 }
 .divTableRow
 {
@@ -12,24 +12,43 @@
 	border: 1px solid #999999;
 	display: table-cell;
 	padding: 3px 10px;
+	min-width: 25em;
+}
+.divTableCella
+{
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 10em;
 }
 .divTableHead
 {
 	border: 1px solid #999999;
 	display: table-cell;
 	padding: 3px 10px;
+	min-width: 25em;
+}
+.divTableHeada
+{
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 10em;
 }
 .divTableHeading
 {
 	background-color: #EEE;
 	display: table-header-group;
 	font-weight: bold;
+	min-width: 25em;
 }
 .divTableFoot
 {
 	background-color: #EEE;
 	display: table-footer-group;
 	font-weight: bold;
+	min-width: 10em;
+	max-width: 35em;
 }
 .divTableBody
 {

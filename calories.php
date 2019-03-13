@@ -402,33 +402,33 @@ print_r($_POST);
 			<div class="divTableBody">
 				<div class="divTableRow">
 					<div class="divTableHeading"></div>
-					<div class="divTableHead">BMR 1</div>
-					<div class="divTableHead">BMR 2</div>
-					<div class="divTableHead">BMR 3</div>
+					<div class="divTableHeada">BMR 1</div>
+					<div class="divTableHeada">BMR 2</div>
+					<div class="divTableHeada">BMR 3</div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">BMR</div>
-					<div class="divTableCell"><?php echo number_format($to_burn["bmr1"],0); ?> (<?php echo number_format($to_burn["bmr1"]/24,1); ?>/h)</div>
-					<div class="divTableCell"><?php echo number_format($to_burn["bmr2"],0); ?> (<?php echo number_format($to_burn["bmr2"]/24,1); ?>/h)</div>
-					<div class="divTableCell"><?php echo number_format($to_burn["bmr3"],0); ?> (<?php echo number_format($to_burn["bmr3"]/24,1); ?>/h)</div>
+					<div class="divTableCella"><?php echo number_format($to_burn["bmr1"],0); ?> (<?php echo number_format($to_burn["bmr1"]/24,1); ?>/h)</div>
+					<div class="divTableCella"><?php echo number_format($to_burn["bmr2"],0); ?> (<?php echo number_format($to_burn["bmr2"]/24,1); ?>/h)</div>
+					<div class="divTableCella"><?php echo number_format($to_burn["bmr3"],0); ?> (<?php echo number_format($to_burn["bmr3"]/24,1); ?>/h)</div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Calories left to burn (BMR 1)</div>
-					<div class="divTableCell"><?php echo number_format($to_burn['left_1'],0); ?></div>
-					<div class="divTableCell"><?php echo number_format($to_burn['left_2'],0); ?></div>
-					<div class="divTableCell"><?php echo number_format($to_burn['left_3'],0); ?></div>
+					<div class="divTableCella"><?php echo number_format($to_burn['left_1'],0); ?></div>
+					<div class="divTableCella"><?php echo number_format($to_burn['left_2'],0); ?></div>
+					<div class="divTableCella"><?php echo number_format($to_burn['left_3'],0); ?></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Cals/min</div>
-					<div class="divTableCell"><?php echo number_format($to_burn["rate_1"],2); ?></div>
-					<div class="divTableCell"><?php echo number_format($to_burn["rate_2"],2); ?></div>
-					<div class="divTableCell"><?php echo number_format($to_burn["rate_3"],2); ?></div>
+					<div class="divTableCella"><?php echo number_format($to_burn["rate_1"],2); ?></div>
+					<div class="divTableCella"><?php echo number_format($to_burn["rate_2"],2); ?></div>
+					<div class="divTableCella"><?php echo number_format($to_burn["rate_3"],2); ?></div>
 				</div>
 				<div class="divTableRow">
 					<div class="divTableHead">Estimated exercise time for <?php echo number_format($intake,0); ?> calories</div>
-					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_1b"]); ?></div>
-					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_2b"]); ?></div>
-					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_3b"]); ?></div>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_1b"]); ?></div>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_2b"]); ?></div>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_3b"]); ?></div>
 				</div>
 <?php
 $temp=0;
@@ -442,9 +442,9 @@ foreach(array("","_350","_500","_750") as $key)
 		printf(" (%s + %s)",$which,str_replace("_","",$key));
 	}
 ?></div>
-					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_1".$key]); ?></div>
-					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_2".$key]); ?></div>
-					<div class="divTableCell"><?php echo time_from_seconds($to_burn["time_3".$key]); ?></div>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_1".$key]); ?></div>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_2".$key]); ?></div>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_3".$key]); ?></div>
 				</div>
 <?php
 }
@@ -456,19 +456,19 @@ foreach(array("","_350","_500","_750") as $key)
 //	$temp=$bmr[0]*$now/86400+$calories;
 	$temp=$bmr[0]+$active;
 ?>
-					<div class="divTableCell"><?php echo number_format($temp,0); ?></div>
+					<div class="divTableCella"><?php echo number_format($temp,0); ?></div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
 //	$temp=$bmr[1]*$now/86400+$calories;
 	$temp=$bmr[1]+$active;
 ?>
-					<div class="divTableCell"><?php echo number_format($temp,0); ?></div>
+					<div class="divTableCella"><?php echo number_format($temp,0); ?></div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
 //	$temp=$bmr[2]*$now/86400+$calories;
 	$temp=$bmr[2]+$active;
 ?>
-					<div class="divTableCell"><?php echo number_format($temp,0); ?></div>
+					<div class="divTableCella"><?php echo number_format($temp,0); ?></div>
 				</div>
 			</div>
 		</div>
@@ -477,13 +477,13 @@ foreach(array("","_350","_500","_750") as $key)
 			<div class="divTableBody">
 				<div class="divTableRow">
 					<div class="divTableHead">Reference burn rate (Cal/min)</div>
-					<div class="divTableHead"><?php echo number_format($ref_cal,3); ?></div>
+					<div class="divTableHeada"><?php echo number_format($ref_cal,3); ?></div>
 				</div>
 			</div>
 			<div class="divTableBody">
 				<div class="divTableRow">
 					<div class="divTableHead">Estimated activity burn</div>
-					<div class="divTableHead"><?php echo number_format($active,0); ?> calories</div>
+					<div class="divTableHeada"><?php echo number_format($active,0); ?> calories</div>
 				</div>
 			</div>
 		</div>
@@ -501,18 +501,19 @@ $tab_index=1;
 				<div class="divTableBody">
 					<div class="divTableRow">
 						<div class="divTableHead">Present calories</div>
-						<div class="divTableCell"><input name="calories" id="calories" type="number" step="1" min="0" max="10000" value="<?php echo $calories; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="calories" id="calories" type="number" step="1" min="0" max="10000" value="<?php echo $calories; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Present food intake (Cal)</div>
-						<div class="divTableCell"><input name="intake" id="intake" type="number" step="1" min="0" max="20000" value="<?php echo $intake; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="intake" id="intake" type="number" step="1" min="0" max="20000" value="<?php echo $intake; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Reference calories</div>
-						<div class="divTableCell"><input name="reference_calories" id="reference_calories" type="number" step="0.001" min="0" max="15" value="<?php echo $ref_cal; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="reference_calories" id="reference_calories" type="number" step="0.001" min="0" max="15" value="<?php echo $ref_cal; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
-					<div class="divTableHead">Gender</div>
-						<div class="divTableCell">
+					<div class="divTableRow">
+						<div class="divTableHead">Gender</div>
+						<div class="divTableCella">
 							<select name="gender" id="gender" tabindex="<?php echo $tab_index++; ?>">
 								<option value="1" <?php if($gender==1) printf("selected"); ?>>Female</option>
 								<option value="0" <?php if($gender==0) printf("selected"); ?>>Male</option>
@@ -521,19 +522,19 @@ $tab_index=1;
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Height (cm)</div>
-						<div class="divTableCell"><input name="height" id="height" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($height,1); ?>" tabindex="<?php echo $tab_index++; ?>"/></div>
+						<div class="divTableCella"><input name="height" id="height" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($height,1); ?>" tabindex="<?php echo $tab_index++; ?>"/></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Weight (kg)</div>
-						<div class="divTableCell"><input name="weight" id="weight" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($weight,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="weight" id="weight" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($weight,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Bodyfat %</div>
-						<div class="divTableCell"><input name="fat" id="fat" type="number" step="0.01" min="0" max="100" value="<?php echo number_format($fat,2); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="fat" id="fat" type="number" step="0.01" min="0" max="100" value="<?php echo number_format($fat,2); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Minimum calorie target</div>
-						<div class="divTableCell"><input name="target" id="target" type="number" step="1" min="<?php echo intval($bmr[0]); ?>" max="10000" value="<?php echo intval($target); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="target" id="target" type="number" step="1" min="<?php echo intval($bmr[0]); ?>" max="10000" value="<?php echo intval($target); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 				</div>
 			</div>
@@ -549,11 +550,11 @@ $tab_index=1;
 				<div class="divTableBody">
 					<div class="divTableRow">
 						<div class="divTableHead">Reference calories</div>
-						<div class="divTableCell"><input name="_9" id="_9" type="number" step="1" min="0" max="10000" value="<?php echo $pre_burn; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="_9" id="_9" type="number" step="1" min="0" max="10000" value="<?php echo $pre_burn; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Time</div>
-						<div class="divTableCell"><input name="_0" id="_0" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="_0" id="_0" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 				</div>
 			</div>
