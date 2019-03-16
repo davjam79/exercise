@@ -21,7 +21,6 @@ $time=array(
 	"seconds"	=>	0,
 	);
 $intake=0;
-//$min_cal=2400;
 $target=0;
 
 $now=86400-time()%86400;                        // time to midnight
@@ -31,7 +30,7 @@ $clock=date("H:i:s",time());
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Calculate time walking needed to reach <?php echo $min_cal; ?> calories.</title>
+		<title>Calculate time walking needed to reach calorie targets.</title>
 		<meta content="">
 		<link rel="stylesheet" href="exercise.css">
 		<script>
