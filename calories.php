@@ -128,6 +128,7 @@ print_r($_POST);
 			$pre_burn=1;
 		}
 		$ref_cal=intval($pre_burn/$time["seconds"]*60000)/1000;
+		$ref_cal2=$ref_cal;
 	}
 	else
 	{
@@ -255,6 +256,18 @@ print_r($_POST);
 				{
 					$gender=$temp;
 				}
+			}
+		}
+		if(isset($_POST["_b"]))
+		{
+			$temp=$_POST["_b"];
+			if(is_numeric($temp))
+			{
+				$ref_cal2=$temp;
+			}
+			else
+			{
+				$ref_cal2=intval($pre_burn/$time["seconds"]*60000)/1000;
 			}
 		}
 	}
@@ -537,8 +550,9 @@ $tab_index=1;
 					</div>
 				</div>
 			</div>
-			<input name="_9" type="hidden" value="<?php echo $pre_burn; ?>" />
 			<input name="_0" type="hidden" value="<?php echo $time_string; ?>" />
+			<input name="_9" type="hidden" value="<?php echo $pre_burn; ?>" />
+			<input name="_b" type="hidden" value="<?php echo $ref_cal2; ?>" />
 			<input name="now" type="hidden" value="<?php echo $now; ?>" />
 			<input type="submit" name="calculate" id="calculate" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
 			<input type="reset" tabindex="<?php echo $tab_index++; ?>" />
@@ -565,6 +579,8 @@ $tab_index=1;
 			<input name="_6" type="hidden" value="<?php echo $weight; ?>" />
 			<input name="_7" type="hidden" value="<?php echo $fat; ?>" />
 			<input name="_8" type="hidden" value="<?php echo $target; ?>" />
+			<input name="_a" type="number" value="<?php echo $ref_cal2; ?>" disabled/>
+			<input name="_b" type="hidden" value="<?php echo $ref_cal2; ?>">
 			<input name="now" type="hidden" value="<?php echo $now; ?>" />
 			<input type="submit" name="ref_cal" id="ref_cal" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
 			<input type="reset" tabindex="<?php echo $tab_index++; ?>" />
