@@ -559,18 +559,6 @@ $tab_index=1;
 		</form>
 		<hr />
 		<form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" target="_self" accept-charset="UTF-8">
-			<div class="divTable">
-				<div class="divTableBody">
-					<div class="divTableRow">
-						<div class="divTableHead">Reference calories</div>
-						<div class="divTableCella"><input name="_9" id="_9" type="number" step="1" min="0" max="10000" value="<?php echo $pre_burn; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
-					</div>
-					<div class="divTableRow">
-						<div class="divTableHead">Time</div>
-						<div class="divTableCella"><input name="_0" id="_0" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
-					</div>
-				</div>
-			</div>
 			<input name="_1" type="hidden" value="<?php echo $calories; ?>" />
 			<input name="_2" type="hidden" value="<?php echo $intake; ?>" />
 			<input name="_3" type="hidden" value="<?php echo $ref_cal; ?>" />
@@ -579,7 +567,22 @@ $tab_index=1;
 			<input name="_6" type="hidden" value="<?php echo $weight; ?>" />
 			<input name="_7" type="hidden" value="<?php echo $fat; ?>" />
 			<input name="_8" type="hidden" value="<?php echo $target; ?>" />
-			<input name="_a" type="number" value="<?php echo $ref_cal2; ?>" disabled/>
+			<div class="divTable">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableHead">Reference calories burnt</div>
+						<div class="divTableCella"><input name="_9" id="_9" type="number" step="1" min="0" max="10000" value="<?php echo $pre_burn; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableHead">Time</div>
+						<div class="divTableCella"><input name="_0" id="_0" type="time" step="1" min="0" value="<?php echo $time_string; ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+					</div>
+					<div class="divTableRow">
+						<div class="divTableHead">Calories per minute</div>
+						<div class="divTableCella"><input name="_a" type="number" value="<?php echo $ref_cal2; ?>" disabled/></div>
+					</div>
+				</div>
+			</div>
 			<input name="_b" type="hidden" value="<?php echo $ref_cal2; ?>">
 			<input name="now" type="hidden" value="<?php echo $now; ?>" />
 			<input type="submit" name="ref_cal" id="ref_cal" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
