@@ -23,7 +23,8 @@ $time=array(
 $intake=0;
 $target=0;
 
-$now=86400-time()%86400;                        // time to midnight
+$now=time()-strtotime("midnight");						// time since midnight
+$remaining=86400-$now;									// time to midnight
 $clock=date("H:i:s",time());
 
 ?>
@@ -50,6 +51,8 @@ if(isset($_POST["calculate"])||isset($_POST["ref_cal"]))
 <pre>
 <?php
 print_r($_POST);
+printf("%s\n",$now);
+printf("%s\n",$remaining);
 ?>
 </pre>
 <?php
@@ -292,7 +295,7 @@ print_r($_POST);
 	$min[1]=max(intval($bmr[0]),$intake)+350;
 	$min[2]=max(intval($bmr[0]),$intake)+500;
 	$min[3]=max(intval($bmr[0]),$intake)+750;
-	$min[4]=min($intake,$target);
+	$min[4]=min(max($intake,$bmr[0]),$target);
 
 	if($min[1]==($intake+350))
 	{
@@ -318,15 +321,15 @@ print_r($_POST);
 //		$ref_rate=0.00027777777777;
 //	}
 
-	$temp=intval((86400-$now)*$bmr[0]/86400);
+	$temp=intval($now*$bmr[0]/86400);
 	$calories=max($temp,$calories);		// calories can't be lower than the time based proportion of BMR.
 	$active=$calories-$temp;
 
-	$temp=$min[0]-$now*$bmr[0]/86400-$calories;		// how many calories left to burn to hit target
-	$to_burn["time_1_350"]=max($min[1]-$now*$bmr[0]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_1_500"]=max($min[2]-$now*$bmr[0]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_1_750"]=max($min[3]-$now*$bmr[0]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_1b"]=max($intake-$now*$bmr[0]/86400-$calories,0)/$ref_rate;
+	$temp=$min[0]-$remaining*$bmr[0]/86400-$calories;		// how many calories left to burn to hit target
+	$to_burn["time_1_350"]=max($min[1]-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_1_500"]=max($min[2]-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_1_750"]=max($min[3]-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_1b"]=max($intake-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
 	$to_burn["bmr1"]=$bmr[0];
 	if($temp<=0)
 	{
@@ -342,14 +345,14 @@ print_r($_POST);
 	{
 		$to_burn["left_1"]=$temp;
 		$to_burn["time_1"]=$temp/$ref_rate;
-		$to_burn["rate_1"]=$temp/($now/60);
+		$to_burn["rate_1"]=$temp/($remaining/60);
 	}
 
-	$temp=$min[0]-$now*$bmr[1]/86400-$calories;		// how many calories left to burn to hit target
-	$to_burn["time_2_350"]=max($min[1]-$now*$bmr[1]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_2_500"]=max($min[2]-$now*$bmr[1]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_2_750"]=max($min[3]-$now*$bmr[1]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_2b"]=max($intake-$now*$bmr[1]/86400-$calories,0)/$ref_rate;
+	$temp=$min[0]-$remaining*$bmr[1]/86400-$calories;		// how many calories left to burn to hit target
+	$to_burn["time_2_350"]=max($min[1]-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_2_500"]=max($min[2]-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_2_750"]=max($min[3]-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_2b"]=max($intake-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
 	$to_burn["bmr2"]=$bmr[1];
 	if($temp<=0)
 	{
@@ -365,14 +368,14 @@ print_r($_POST);
 	{
 		$to_burn["left_2"]=$temp;
 		$to_burn["time_2"]=$temp/$ref_rate;
-		$to_burn["rate_2"]=$temp/($now/60);
+		$to_burn["rate_2"]=$temp/($remaining/60);
 	}
 	
-	$temp=$min[0]-$now*$bmr[2]/86400-$calories;		// how many calories left to burn to hit target
-	$to_burn["time_3_350"]=max($min[1]-$now*$bmr[2]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_3_500"]=max($min[2]-$now*$bmr[2]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_3_750"]=max($min[3]-$now*$bmr[2]/86400-$calories,0)/$ref_rate;
-	$to_burn["time_3b"]=max($intake-$now*$bmr[2]/86400-$calories,0)/$ref_rate;
+	$temp=$min[0]-$remaining*$bmr[2]/86400-$calories;		// how many calories left to burn to hit target
+	$to_burn["time_3_350"]=max($min[1]-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_3_500"]=max($min[2]-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_3_750"]=max($min[3]-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
+	$to_burn["time_3b"]=max($intake-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
 	$to_burn["bmr3"]=$bmr[2];
 
 	if($temp<=0)
@@ -389,10 +392,10 @@ print_r($_POST);
 	{
 		$to_burn["left_3"]=$temp;
 		$to_burn["time_3"]=$temp/$ref_rate;
-		$to_burn["rate_3"]=$temp/($now/60);
+		$to_burn["rate_3"]=$temp/($remaining/60);
 	}
 	
-	$temp=$min[4]-$now*$bmr[0]/86400-$calories;		// how many calories left to burn to hit target
+	$temp=$min[4]-$remaining*$bmr[0]/86400-$calories;		// how many calories left to burn to hit target
 	if($temp<=0)
 	{
 		$to_burn["left_4"]=0;
@@ -407,7 +410,7 @@ print_r($_POST);
 	{
 		$to_burn["left_4"]=$temp;
 		$to_burn["time_4"]=$temp/$ref_rate;
-		$to_burn["rate_4"]=$temp/($now/60);
+		$to_burn["rate_4"]=$temp/($remaining/60);
 	}
 ?>
 		<div class="divTable">
@@ -436,6 +439,10 @@ print_r($_POST);
 					<div class="divTableCella"><?php echo number_format($to_burn["rate_2"],2); ?></div>
 					<div class="divTableCella"><?php echo number_format($to_burn["rate_3"],2); ?></div>
 				</div>
+<?php
+if($intake>$bmr[0])
+{
+?>
 				<div class="divTableRow">
 					<div class="divTableHead">Estimated exercise time for <?php echo number_format($intake,0); ?> calories</div>
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_1b"]); ?></div>
@@ -443,6 +450,7 @@ print_r($_POST);
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_3b"]); ?></div>
 				</div>
 <?php
+}
 $temp=0;
 foreach(array("","_350","_500","_750") as $key)
 {
@@ -465,19 +473,16 @@ foreach(array("","_350","_500","_750") as $key)
 					<div class="divTableHead">Estimated minimum calories burned by midnight</div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
-//	$temp=$bmr[0]*$now/86400+$calories;
 	$temp=$bmr[0]+$active;
 ?>
 					<div class="divTableCella"><?php echo number_format($temp,0); ?></div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
-//	$temp=$bmr[1]*$now/86400+$calories;
 	$temp=$bmr[1]+$active;
 ?>
 					<div class="divTableCella"><?php echo number_format($temp,0); ?></div>
 <?php
 // Calories burnt at BMR rate for rest the of the day
-//	$temp=$bmr[2]*$now/86400+$calories;
 	$temp=$bmr[2]+$active;
 ?>
 					<div class="divTableCella"><?php echo number_format($temp,0); ?></div>
@@ -553,7 +558,7 @@ $tab_index=1;
 			<input name="_0" type="hidden" value="<?php echo $time_string; ?>" />
 			<input name="_9" type="hidden" value="<?php echo $pre_burn; ?>" />
 			<input name="_b" type="hidden" value="<?php echo $ref_cal2; ?>" />
-			<input name="now" type="hidden" value="<?php echo $now; ?>" />
+			<input name="now" type="hidden" value="<?php echo $remaining; ?>" />
 			<input type="submit" name="calculate" id="calculate" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
 			<input type="reset" tabindex="<?php echo $tab_index++; ?>" />
 		</form>
@@ -584,7 +589,7 @@ $tab_index=1;
 				</div>
 			</div>
 			<input name="_b" type="hidden" value="<?php echo $ref_cal2; ?>">
-			<input name="now" type="hidden" value="<?php echo $now; ?>" />
+			<input name="now" type="hidden" value="<?php echo $remaining; ?>" />
 			<input type="submit" name="ref_cal" id="ref_cal" value="Calculate" tabindex="<?php echo $tab_index++; ?>" />
 			<input type="reset" tabindex="<?php echo $tab_index++; ?>" />
 		</form>
