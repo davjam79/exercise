@@ -349,10 +349,12 @@ printf("%s\n",$remaining);
 
 	$ref_rate=$ref_cal/60;
 
-	$temp=intval((86400-$now)*$bmr[0]/86400);
+	$temp=intval($remaining*$bmr[0]/86400);
 
 // calories can't be lower than the time based proportion of BMR.
 	$calories=max($temp,$calories);
+
+// Estimated calories burnt during activities
 	$active=$calories-$temp;
 
 // how many calories left to burn to hit target
