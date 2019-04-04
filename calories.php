@@ -24,7 +24,7 @@ $intake=0;
 $target=0;
 
 $now=time()-strtotime("midnight");						// time since midnight
-$remaining=86400-$now;									// time to midnight
+$remaining=86400-$now;								// time to midnight
 $clock=date("H:i:s",time());
 
 ?>
@@ -60,7 +60,8 @@ printf("%s\n",$remaining);
 */
 	if(isset($_POST["ref_cal"]))
 	{
-		if(isset($_POST["_0"]))						// time taken for reference calorie count 
+// time taken for reference calorie count 
+		if(isset($_POST["_0"]))
 		{
 			$temp=$_POST["_0"];
 			$temp=explode(":",$temp);
@@ -115,12 +116,14 @@ printf("%s\n",$remaining);
 		{
 			$target=$_POST["_8"];
 		}
-		if(isset($_POST["_9"]))					// used for the reference exercise
+// used for the reference exercise
+		if(isset($_POST["_9"]))
 		{
 			$temp=$_POST["_9"];
 			if(is_numeric($temp))
 			{
-				if(($temp>=1)&&($temp<=1600))				// between 1 and 1600
+// between 1 and 1600
+				if(($temp>=1)&&($temp<=1600))
 				{
 					$pre_burn=$temp;
 				}
@@ -135,7 +138,9 @@ printf("%s\n",$remaining);
 	}
 	else
 	{
-		if(isset($_POST["_0"]))						// time taken for reference calorie count 
+
+// time taken for reference calorie count 
+		if(isset($_POST["_0"]))
 		{
 			$temp=$_POST["_0"];
 			$temp=explode(":",$temp);
@@ -158,12 +163,15 @@ printf("%s\n",$remaining);
 			$time['secs']=1;
 			$time['seconds']=1;
 		}
-		if(isset($_POST["_9"]))					// used for the reference exercise
+
+// used for the reference exercise
+		if(isset($_POST["_9"]))
 		{
 			$temp=$_POST["_9"];
 			if(is_numeric($temp))
 			{
-				if(($temp>=1)&&($temp<=1600))				// between 1 and 1600
+// between 1 and 1600
+				if(($temp>=1)&&($temp<=1600))
 				{
 					$pre_burn=$temp;
 				}
@@ -173,72 +181,90 @@ printf("%s\n",$remaining);
 		{
 			$pre_burn=1;
 		}
+
+
 		if(isset($_POST["height"]))
 		{
 			$temp=$_POST["height"];
 			if(is_numeric($temp))
 			{
-				if(($temp>=60)&&($temp<=275))				// between 0.6m and 2.75m feet tall
+// between 0.6m and 2.75m tall
+				if(($temp>=60)&&($temp<=275))
 				{
 					$height=$temp;
 				}
 			}
 		}
+
+
 		if(isset($_POST["weight"]))
 		{
 			$temp=$_POST["weight"];
 			if(is_numeric($temp))
 			{
-				if(($temp>=10)&&($temp<=160))				// between 10 and 160kg
+// between 10 and 160kg
+				if(($temp>=10)&&($temp<=160))
 				{
 					$weight=$temp;
 				}
 			}
 		}
-		if(isset($_POST["reference_calories"]))					// used for the reference exercise
+
+// used for the reference exercise
+		if(isset($_POST["reference_calories"]))
 		{
 			$temp=$_POST["reference_calories"];
 			if(is_numeric($temp))
 			{
-				if($temp>=1)						// at least 1
+// at least 1
+				if($temp>=1)
 				{
 					$ref_cal=$temp;
 				}
 			}
 		}
-		if(isset($_POST["calories"]))						// calories used so far
+
+// calories used so far
+		if(isset($_POST["calories"]))
 		{
 			$temp=$_POST["calories"];
 			if(is_numeric($temp))
 			{
-				if($temp>=0)						// at least 0
+// at least 0
+				if($temp>=0)
 				{
 					$calories=$temp;
 				}
 			}
 		}
-		if(isset($_POST["target"]))						// minimum calorie target
+
+
+		if(isset($_POST["target"]))					// minimum calorie target
 		{
 			$temp=$_POST["target"];
 			if(is_numeric($temp))
 			{
-				if($temp>=0)						// at least 0
+				if($temp>=0)					// at least 0
 				{
 					$target=$temp;
 				}
 			}
 		}
-		if(isset($_POST["intake"]))						// calories consumed so far
+
+
+		if(isset($_POST["intake"]))					// calories consumed so far
 		{
 			$temp=$_POST["intake"];
 			if(is_numeric($temp))
 			{
-				if($temp>=0)						// any positive number
+				if($temp>=0)					// any positive number
 				{
 					$intake=$temp;
 				}
 			}
 		}
+
+
 		if(isset($_POST["fat"]))
 		{
 			$temp=$_POST["fat"];
@@ -250,6 +276,8 @@ printf("%s\n",$remaining);
 				}
 			}
 		}
+
+
 		if(isset($_POST["gender"]))
 		{
 			$temp=$_POST["gender"];
@@ -261,6 +289,8 @@ printf("%s\n",$remaining);
 				}
 			}
 		}
+
+
 		if(isset($_POST["_b"]))
 		{
 			$temp=$_POST["_b"];
@@ -275,12 +305,10 @@ printf("%s\n",$remaining);
 		}
 	}
 
-//	$height/=4;
-//	$weight/=10;
-
 	$time_string=sprintf("%02s:%02s:%02s",$time['hour'],$time['mins'],$time['secs']);
 
-	$h1=$height/100;							// cm -> m
+// cm -> m
+	$h1=$height/100;
 	$w1=$weight;
 
 	$bmr=array();
@@ -310,22 +338,20 @@ printf("%s\n",$remaining);
 		$which="BMR";
 	}
 
+	$results_array=array();
+
 	$to_burn=array();
 
-//	if($time['seconds']>0)
-//	{
-		$ref_rate=$ref_cal/60;
-//	}
-//	else
-//	{
-//		$ref_rate=0.00027777777777;
-//	}
+	$ref_rate=$ref_cal/60;
 
 	$temp=intval($now*$bmr[0]/86400);
-	$calories=max($temp,$calories);		// calories can't be lower than the time based proportion of BMR.
+
+// calories can't be lower than the time based proportion of BMR.
+	$calories=max($temp,$calories);
 	$active=$calories-$temp;
 
-	$temp=$min[0]-$remaining*$bmr[0]/86400-$calories;		// how many calories left to burn to hit target
+// how many calories left to burn to hit target
+	$temp=$min[0]-$remaining*$bmr[0]/86400-$calories;
 	$to_burn["time_1_350"]=max($min[1]-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
 	$to_burn["time_1_500"]=max($min[2]-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
 	$to_burn["time_1_750"]=max($min[3]-$remaining*$bmr[0]/86400-$calories,0)/$ref_rate;
@@ -336,10 +362,6 @@ printf("%s\n",$remaining);
 		$to_burn["left_1"]=0;
 		$to_burn["rate_1"]=0;
 		$to_burn["time_1"]=0;
-//		$to_burn["time_1_350"]=0;
-//		$to_burn["time_1_500"]=0;
-//		$to_burn["time_1_750"]=0;
-//		$to_burn["time_1b"]=0;
 	}
 	else
 	{
@@ -348,7 +370,8 @@ printf("%s\n",$remaining);
 		$to_burn["rate_1"]=$temp/($remaining/60);
 	}
 
-	$temp=$min[0]-$remaining*$bmr[1]/86400-$calories;		// how many calories left to burn to hit target
+// how many calories left to burn to hit target
+	$temp=$min[0]-$remaining*$bmr[1]/86400-$calories;
 	$to_burn["time_2_350"]=max($min[1]-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
 	$to_burn["time_2_500"]=max($min[2]-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
 	$to_burn["time_2_750"]=max($min[3]-$remaining*$bmr[1]/86400-$calories,0)/$ref_rate;
@@ -359,10 +382,6 @@ printf("%s\n",$remaining);
 		$to_burn["left_2"]=0;
 		$to_burn["rate_2"]=0;
 		$to_burn["time_2"]=0;
-//		$to_burn["time_2_350"]=0;
-//		$to_burn["time_2_500"]=0;
-//		$to_burn["time_2_750"]=0;
-//		$to_burn["time_2b"]=0;
 	}
 	else
 	{
@@ -370,8 +389,9 @@ printf("%s\n",$remaining);
 		$to_burn["time_2"]=$temp/$ref_rate;
 		$to_burn["rate_2"]=$temp/($remaining/60);
 	}
-	
-	$temp=$min[0]-$remaining*$bmr[2]/86400-$calories;		// how many calories left to burn to hit target
+
+// how many calories left to burn to hit target
+	$temp=$min[0]-$remaining*$bmr[2]/86400-$calories;
 	$to_burn["time_3_350"]=max($min[1]-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
 	$to_burn["time_3_500"]=max($min[2]-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
 	$to_burn["time_3_750"]=max($min[3]-$remaining*$bmr[2]/86400-$calories,0)/$ref_rate;
@@ -383,10 +403,6 @@ printf("%s\n",$remaining);
 		$to_burn["left_3"]=0;
 		$to_burn["rate_3"]=0;
 		$to_burn["time_3"]=0;
-//		$to_burn["time_3_350"]=0;
-//		$to_burn["time_3_500"]=0;
-//		$to_burn["time_3_750"]=0;
-//		$to_burn["time_3b"]=0;
 	}
 	else
 	{
@@ -394,17 +410,14 @@ printf("%s\n",$remaining);
 		$to_burn["time_3"]=$temp/$ref_rate;
 		$to_burn["rate_3"]=$temp/($remaining/60);
 	}
-	
-	$temp=$min[4]-$remaining*$bmr[0]/86400-$calories;		// how many calories left to burn to hit target
+
+// how many calories left to burn to hit target
+	$temp=$min[4]-$remaining*$bmr[0]/86400-$calories;
 	if($temp<=0)
 	{
 		$to_burn["left_4"]=0;
 		$to_burn["rate_4"]=0;
 		$to_burn["time_4"]=0;
-//		$to_burn["time_1_350"]=0;
-//		$to_burn["time_1_500"]=0;
-//		$to_burn["time_1_750"]=0;
-//		$to_burn["time_1b"]=0;
 	}
 	else
 	{
@@ -507,8 +520,6 @@ foreach(array("","_350","_500","_750") as $key)
 		<hr />
 <?php
 }
-
-//printf("%s<br />\n%s<br />\n",$height,$weight);
 
 $tab_index=1;
 
