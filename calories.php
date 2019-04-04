@@ -349,7 +349,7 @@ printf("%s\n",$remaining);
 
 	$ref_rate=$ref_cal/60;
 
-	$temp=intval($remaining*$bmr[0]/86400);
+	$temp=intval($now*$bmr[0]/86400);
 
 // calories can't be lower than the time based proportion of BMR.
 	$calories=max($temp,$calories);
@@ -358,40 +358,40 @@ printf("%s\n",$remaining);
 	$active=$calories-$temp;
 
 // how many calories left to burn to hit target
-	$temp=cals_left($min[0],$now,$bmr[0],$calories);
-	$to_burn["time_1_350"]=cals_left($min[1],$now,$bmr[0],$calories)/$ref_rate;
-	$to_burn["time_1_500"]=cals_left($min[2],$now,$bmr[0],$calories)/$ref_rate;
-	$to_burn["time_1_750"]=cals_left($min[3],$now,$bmr[0],$calories)/$ref_rate;
-	$to_burn["time_1b"]=cals_left($intake,$now,$bmr[0],$calories)/$ref_rate;
+	$temp=cals_left($min[0],$remaining,$bmr[0],$calories);
+	$to_burn["time_1_350"]=cals_left($min[1],$remaining,$bmr[0],$calories)/$ref_rate;
+	$to_burn["time_1_500"]=cals_left($min[2],$remaining,$bmr[0],$calories)/$ref_rate;
+	$to_burn["time_1_750"]=cals_left($min[3],$remaining,$bmr[0],$calories)/$ref_rate;
+	$to_burn["time_1b"]=cals_left($intake,$remaining,$bmr[0],$calories)/$ref_rate;
 	$to_burn["bmr1"]=$bmr[0];
 	$to_burn["left_1"]=$temp;
 	$to_burn["time_1"]=$temp/$ref_rate;
 	$to_burn["rate_1"]=$temp/($now/60);
 
 // how many calories left to burn to hit target
-	$temp=cals_left($min[0],$now,$bmr[1],$calories);
-	$to_burn["time_2_350"]=cals_left($min[1],$now,$bmr[1],$calories)/$ref_rate;
-	$to_burn["time_2_500"]=cals_left($min[2],$now,$bmr[1],$calories)/$ref_rate;
-	$to_burn["time_2_750"]=cals_left($min[3],$now,$bmr[1],$calories)/$ref_rate;
-	$to_burn["time_2b"]=cals_left($intake,$now,$bmr[1],$calories)/$ref_rate;
+	$temp=cals_left($min[0],$remaining,$bmr[1],$calories);
+	$to_burn["time_2_350"]=cals_left($min[1],$remaining,$bmr[1],$calories)/$ref_rate;
+	$to_burn["time_2_500"]=cals_left($min[2],$remaining,$bmr[1],$calories)/$ref_rate;
+	$to_burn["time_2_750"]=cals_left($min[3],$remaining,$bmr[1],$calories)/$ref_rate;
+	$to_burn["time_2b"]=cals_left($intake,$remaining,$bmr[1],$calories)/$ref_rate;
 	$to_burn["bmr2"]=$bmr[1];
 	$to_burn["left_2"]=$temp;
 	$to_burn["time_2"]=$temp/$ref_rate;
 	$to_burn["rate_2"]=$temp/($now/60);
 
 // how many calories left to burn to hit target
-	$temp=cals_left($min[0],$now,$bmr[2],$calories);
-	$to_burn["time_3_350"]=cals_left($min[1],$now,$bmr[2],$calories)/$ref_rate;
-	$to_burn["time_3_500"]=cals_left($min[2],$now,$bmr[2],$calories)/$ref_rate;
-	$to_burn["time_3_750"]=cals_left($min[3],$now,$bmr[2],$calories)/$ref_rate;
-	$to_burn["time_3b"]=cals_left($intake,$now,$bmr[2],$calories)/$ref_rate;
+	$temp=cals_left($min[0],$remaining,$bmr[2],$calories);
+	$to_burn["time_3_350"]=cals_left($min[1],$remaining,$bmr[2],$calories)/$ref_rate;
+	$to_burn["time_3_500"]=cals_left($min[2],$remaining,$bmr[2],$calories)/$ref_rate;
+	$to_burn["time_3_750"]=cals_left($min[3],$remaining,$bmr[2],$calories)/$ref_rate;
+	$to_burn["time_3b"]=cals_left($intake,$remaining,$bmr[2],$calories)/$ref_rate;
 	$to_burn["bmr3"]=$bmr[2];
 	$to_burn["left_3"]=$temp;
 	$to_burn["time_3"]=$temp/$ref_rate;
 	$to_burn["rate_3"]=$temp/($now/60);
 
 // how many calories left to burn to hit target
-	$temp=cals_left($min[4],$now,$bmr[0],$calories);
+	$temp=cals_left($min[4],$remaining,$bmr[0],$calories);
 	$to_burn["left_4"]=$temp;
 	$to_burn["time_4"]=$temp/$ref_rate;
 	$to_burn["rate_4"]=$temp/($now/60);
