@@ -328,7 +328,7 @@ printf("%s\n",$remaining);
 			if(is_numeric($temp))
 			{
 // at least 18
-				if()($temp>=18)&&($temp<=130))
+				if(($temp>=18)&&($temp<=130))
 				{
 					$age=$temp;
 				}
