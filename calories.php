@@ -140,6 +140,19 @@ printf("%s\n",$remaining);
 		}
 		$ref_cal=intval($pre_burn/$time["seconds"]*60000)/1000;
 		$ref_cal2=$ref_cal;
+// age
+		if(isset($_POST["_10"]))
+		{
+			$temp=$_POST["_10"];
+			if(is_numeric($temp))
+			{
+// between 18 and 130
+				if(($temp>=18)&&($temp<=130))
+				{
+					$age=$temp;
+				}
+			}
+		}
 	}
 	else
 	{
@@ -308,6 +321,20 @@ printf("%s\n",$remaining);
 				$ref_cal2=intval($pre_burn/$time["seconds"]*60000)/1000;
 			}
 		}
+// age
+		if(isset($_POST["age"]))
+		{
+			$temp=$_POST["age"];
+			if(is_numeric($temp))
+			{
+// at least 18
+				if()($temp>=18)&&($temp<=130))
+				{
+					$age=$temp;
+				}
+			}
+		}
+
 	}
 
 	$time_string=sprintf("%02s:%02s:%02s",$time['hour'],$time['mins'],$time['secs']);
@@ -527,6 +554,10 @@ $tab_index=1;
 						<div class="divTableCella"><input name="weight" id="weight" type="number" step="0.1" min="0" max="1000" value="<?php echo number_format($weight,1); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
+						<div class="divTableHead">Age</div>
+						<div class="divTableCella"><input name="age" id="age" type="number" step="1" min="18" max="130" value="<?php echo number_format($age,0); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+					</div>
+					<div class="divTableRow">
 						<div class="divTableHead">Bodyfat %</div>
 						<div class="divTableCella"><input name="fat" id="fat" type="number" step="0.01" min="0" max="100" value="<?php echo number_format($fat,2); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
@@ -553,6 +584,7 @@ $tab_index=1;
 			<input name="_6" type="hidden" value="<?php echo $weight; ?>" />
 			<input name="_7" type="hidden" value="<?php echo $fat; ?>" />
 			<input name="_8" type="hidden" value="<?php echo $target; ?>" />
+			<input name="_10" type="hidden" value="<?php echo $age; ?>" />
 			<div class="divTable">
 				<div class="divTableBody">
 					<div class="divTableRow">
