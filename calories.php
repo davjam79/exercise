@@ -559,7 +559,7 @@ $tab_index=1;
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Bodyfat %</div>
-						<div class="divTableCella"><input name="fat" id="fat" type="number" step="0.01" min="0" max="100" value="<?php echo number_format($fat,2); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
+						<div class="divTableCella"><input name="fat" id="fat" type="number" step="0.001" min="0" max="100" value="<?php echo number_format($fat,2); ?>" tabindex="<?php echo $tab_index++; ?>" /></div>
 					</div>
 					<div class="divTableRow">
 						<div class="divTableHead">Minimum calorie target</div>
