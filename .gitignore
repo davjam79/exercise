@@ -1,3 +1,7 @@
 # files to ignore
 .kdev4/
-exercise.kdev4
+*.kdev4
+.directory
+*.php
+*.htm
+jsgantt.*
