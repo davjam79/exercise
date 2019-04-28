@@ -455,9 +455,44 @@ if($intake>$bmr[0])
 ?>
 				<div class="divTableRow">
 					<div class="divTableHead">Estimated exercise time for <?php echo number_format($intake,0); ?> calories</div>
+<?php
+	if($to_burn["time_1b"]>$remaining)
+	{
+?>
+					<div class="divTableCellb">Not enough time</div>
+<?php
+	}
+	else
+	{
+?>
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_1b"]); ?></div>
+<?php
+	}
+	if($to_burn["time_2b"]>$remaining)
+	{
+?>
+					<div class="divTableCellb">Not enough time</div>
+<?php
+	}
+	else
+	{
+?>
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_2b"]); ?></div>
+<?php
+	}
+	if($to_burn["time_3b"]>$remaining)
+	{
+?>
+					<div class="divTableCellb">Not enough time</div>
+<?php
+	}
+	else
+	{
+?>
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_3b"]); ?></div>
+<?php
+	}
+?>
 				</div>
 <?php
 }
@@ -472,9 +507,44 @@ foreach(array("","_350","_500","_750") as $key)
 		printf(" (%s + %s)",$which,str_replace("_","",$key));
 	}
 ?></div>
+<?php
+	if($to_burn["time_1".$key]>$remaining)
+	{
+?>
+					<div class="divTableCellb">Not enough time</div>
+<?php
+	}
+	else
+	{
+?>
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_1".$key]); ?></div>
+<?php
+	}
+	if($to_burn["time_2".$key]>$remaining)
+	{
+?>
+					<div class="divTableCellb">Not enough time</div>
+<?php
+	}
+	else
+	{
+?>
 					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_2".$key]); ?></div>
-					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_3".$key]); ?></div>
+<?php
+	}
+	if($to_burn["time_3".$key]>$remaining)
+	{
+?>
+					<div class="divTableCellb">Not enough time</div>
+<?php
+	}
+	else
+	{
+?>
+					<div class="divTableCella"><?php echo time_from_seconds($to_burn["time_1".$key]); ?></div>
+<?php
+	}
+?>
 				</div>
 <?php
 }
