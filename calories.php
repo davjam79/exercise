@@ -11,8 +11,8 @@ header("Cache-Control: post-check=0, pre-check=0");
 header("Pragma: no-cache");
 
 $height=170;									// 5'7"
-$weight=82;									// 82.0kg
-$age=51;
+$weight=65;										// 65.0kg
+$age=50;
 $fat=20;
 $time=array(
 	"hours"		=>	0,
@@ -23,7 +23,7 @@ $time=array(
 $intake=0;
 $target=0;
 
-$now=time()-strtotime("midnight");						// time since midnight
+$now=time()-strtotime("midnight");					// time since midnight
 $remaining=86400-$now;								// time to midnight
 $clock=date("H:i:s",time());
 
