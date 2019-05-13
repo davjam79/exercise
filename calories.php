@@ -11,8 +11,8 @@ header("Cache-Control: post-check=0, pre-check=0");
 header("Pragma: no-cache");
 
 $height=170;									// 5'7"
-$weight=65;										// 65.0kg
-$age=50;
+$weight=62.9;										// 65.0kg
+$age=20;
 $fat=20;
 $time=array(
 	"hours"		=>	0,
